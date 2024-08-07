@@ -109,7 +109,7 @@ body {
 	cursor: pointer;
 }
 
-.active-tag {
+.current {
     background-color: #beb45a;
 }
 

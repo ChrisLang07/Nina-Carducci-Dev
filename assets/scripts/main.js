@@ -131,7 +131,6 @@ function nextButton(modalBody) {
         nextButton.classList.add('button-to-img');
         nextButton.textContent = '>';
         nextButton.addEventListener('click', event => {
-            console.log(event.target);
             if (array.length == 0) {
                 nextImage(modalBody);
             };
@@ -189,15 +188,17 @@ function nextImage(modalBody) {
 function filtersListeners(array) {
     document.body.addEventListener('click', event => {
         if (event.target.matches('.nav-link')) {
+            let navLink = document.querySelectorAll('.nav-link');
+            navLink.forEach(link => {
+                link.classList.remove('current');
+            });
             array.length = 0;
             event.target.classList.add('current');
             let imgItems = document.querySelectorAll('.gallery-item');
             
             imgItems.forEach(imgItem => {
-                console.log(event.target.textContent);
                 if (imgItem.dataset.galleryTag == event.target.textContent) {
                     array.push(imgItem);
-                    console.log(array);
                 };
             });
         };
