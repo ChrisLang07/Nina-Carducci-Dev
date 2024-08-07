@@ -78,21 +78,23 @@ function createModal() {
  */
 function createModalImg(modalBody, imgItem) {
     let modalBackdrop = document.querySelector('.modal-backdrop');
-    let img = document.createElement('img');
-                img.classList.add('modal-img');
-                img.srcset = imgItem.srcset;
-                img.alt = imgItem.alt;
-                img.dataset.category = imgItem.dataset.category;
-                img.dataset.galleryTag = imgItem.dataset.galleryTag;
-                
-                // Close modal with image
-                img.addEventListener('click', event => {
-                modalBackdrop.remove();
-                modalBody.remove();
-            });
-            
+
+    if (imgItem != null) {
+        let img = document.createElement('img');
+            img.classList.add('modal-img');
+            img.srcset = imgItem.srcset;
+            img.alt = imgItem.alt;
+            img.dataset.category = imgItem.dataset.category;
+            img.dataset.galleryTag = imgItem.dataset.galleryTag;
+
+        // Close modal with image
+        img.addEventListener('click', event => {
+            modalBackdrop.remove();
+            modalBody.remove();
+        });
             modalBody.removeChild(modalBody.childNodes[1]);
             modalBody.insertBefore(img, modalBody.childNodes[1]);
+    };
 };
 
 /**
